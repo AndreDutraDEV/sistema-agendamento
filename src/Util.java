@@ -1,15 +1,15 @@
 import java.io.*;
 
 public class Util {
-    public static void salvarAgenda(Agenda agenda, String arquivo) throws IOException {
+    public static void salvarDados(Dados dados, String arquivo) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-            oos.writeObject(agenda);
+            oos.writeObject(dados);
         }
     }
 
-    public static Agenda carregarAgenda(String arquivo) throws IOException, ClassNotFoundException {
+    public static Dados carregarDados(String arquivo) throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))) {
-            return (Agenda) ois.readObject();
+            return (Dados) ois.readObject();
         }
     }
 }

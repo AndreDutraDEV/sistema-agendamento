@@ -14,17 +14,19 @@ public class Agenda implements Serializable {
         agendamentos.add(agendamento);
     }
 
-    // Sobrecarga de método
-    public void adicionarAgendamento(Cliente cliente, Barbeiro barbeiro, Servico servico, LocalDateTime dataHora) {
-        Agendamento agendamento = new Agendamento(cliente, barbeiro, servico, dataHora);
-        agendamentos.add(agendamento);
+    public boolean existeConflitoAgendamento(Barbeiro barbeiro, LocalDateTime dataHora) {
+        for (Agendamento agendamento : agendamentos) {
+            if (agendamento.getBarbeiro().equals(barbeiro) && agendamento.getDataHora().isEqual(dataHora)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<Agendamento> getAgendamentos() {
         return agendamentos;
     }
 
-    // Polimorfismo - Método que pode ser sobrescrito
     public void listarAgendamentos() {
         for (Agendamento agendamento : agendamentos) {
             System.out.println(agendamento.getCliente().getNome() + " - " + agendamento.getServico().getDescricao() + " com " + agendamento.getBarbeiro().getNome() + " em " + agendamento.getDataHora());
