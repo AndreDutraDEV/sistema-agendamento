@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,25 @@ public class Agenda implements Serializable {
     }
 
     public void listarAgendamentos() {
-        for (Agendamento agendamento : agendamentos) {
-            System.out.println(agendamento.getCliente().getNome() + " - " + agendamento.getServico().getDescricao() + " com " + agendamento.getBarbeiro().getNome() + " em " + agendamento.getDataHora());
+        DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM");
+        DateTimeFormatter horaFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        if (agendamentos.size() == 0) {
+            System.out.println("\nA lista de agendamentos está vazia!\n");
+        } else {
+            for (Agendamento agendamento : agendamentos) {
+                String data = agendamento.getDataHora().format(dataFormatter);
+                String hora = agendamento.getDataHora().format(horaFormatter);
+                System.out.println("\n\n----------------------------------");
+                System.out.println("Cliente: " + agendamento.getCliente().getNome());
+                System.out.println("Serviço: " + agendamento.getServico().getDescricao());
+                System.out.println("Barbeiro: " + agendamento.getBarbeiro().getNome());
+                System.out.println("Data: " + data);
+                System.out.println("Hora: " + hora);
+                System.out.println("Preço: " + agendamento.getServico().getPreco());
+                System.out.println("\n\n----------------------------------");
+            }
         }
+
     }
 }

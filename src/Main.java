@@ -1,12 +1,13 @@
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+// import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Agenda agenda = new Agenda();
         List<Barbeiro> barbeiros = new ArrayList<>();
@@ -28,29 +29,61 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Nome do Barbeiro (ou -1 para cancelar): ");
-                    String nomeBarbeiro = scanner.nextLine();
+                    String nomeBarbeiro = null;
+                    while (true) {
+                        System.out.print("Nome do Barbeiro (ou -1 para cancelar): ");
+                        nomeBarbeiro = scanner.nextLine();
+                        if (nomeBarbeiro.equals("-1")) break;
+                        if (!nomeBarbeiro.matches("[A-Za-z ]+")) {
+                            System.out.println("Nome inválido. Digite novamente.");
+                        } else {
+                            break;
+                        }
+                    }
                     if (nomeBarbeiro.equals("-1")) break;
 
-                    System.out.print("Telefone do Barbeiro (ou -1 para cancelar): ");
-                    String telefoneBarbeiro = scanner.nextLine();
+                    String telefoneBarbeiro = null;
+                    while (true) {
+                        System.out.print("Telefone do Barbeiro (ou -1 para cancelar): ");
+                        telefoneBarbeiro = scanner.nextLine();
+                        if (telefoneBarbeiro.equals("-1")) break;
+                        if (!telefoneBarbeiro.matches("\\d{11}")) {
+                            System.out.println("Telefone inválido. Digite novamente.");
+                        } else {
+                            telefoneBarbeiro = formatarTelefone(telefoneBarbeiro);
+                            break;
+                        }
+                    }
                     if (telefoneBarbeiro.equals("-1")) break;
 
-                    System.out.print("Especialidade do Barbeiro (ou -1 para cancelar): ");
-                    String especialidadeBarbeiro = scanner.nextLine();
+                    String especialidadeBarbeiro = null;
+                    while (true) {
+                        System.out.print("Especialidade do Barbeiro (ou -1 para cancelar): ");
+                        especialidadeBarbeiro = scanner.nextLine();
+                        if (especialidadeBarbeiro.equals("-1")) break;
+                        if (!especialidadeBarbeiro.matches("[A-Za-z ]+")) {
+                            System.out.println("Especialidade inválida. Digite novamente.");
+                        } else {
+                            break;
+                        }
+                    }
                     if (especialidadeBarbeiro.equals("-1")) break;
-
+                    
                     Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro);
                     barbeiros.add(barbeiro);
+                    
+                    System.out.println("\nBarbeiro cadastrado com sucesso!\n");
+
                     break;
                 case 2:
                     if (barbeiros.isEmpty()) {
-                        System.out.println("Nenhum barbeiro cadastrado.");
+                        System.out.println("\nNenhum barbeiro cadastrado.\n");
                     } else {
                         System.out.println("Barbeiros cadastrados:");
                         for (Barbeiro b : barbeiros) {
                             System.out.println("Nome: " + b.getNome() + ", Telefone: " + b.getTelefone() + ", Especialidade: " + b.getEspecialidade());
                         }
+                        System.out.println("\n\n");
                     }
                     break;
                 case 3:
@@ -59,17 +92,46 @@ public class Main {
                         break;
                     }
 
-                    System.out.print("Nome do Cliente (ou -1 para cancelar): ");
-                    String nomeCliente = scanner.nextLine();
+                    String nomeCliente = null;
+                    while (true) {
+                        System.out.print("Nome do Cliente (ou -1 para cancelar): ");
+                        nomeCliente = scanner.nextLine();
+                        if (nomeCliente.equals("-1")) break;
+                        if (!nomeCliente.matches("[A-Za-z ]+")) {
+                            System.out.println("Nome inválido. Digite novamente.");
+                        } else {
+                            break;
+                        }
+                    }
                     if (nomeCliente.equals("-1")) break;
 
-                    System.out.print("Telefone do Cliente (ou -1 para cancelar): ");
-                    String telefoneCliente = scanner.nextLine();
+                    String telefoneCliente = null;
+                    while (true) {
+                        System.out.print("Telefone do Cliente (ou -1 para cancelar): ");
+                        telefoneCliente = scanner.nextLine();
+                        if (telefoneCliente.equals("-1")) break;
+                        if (!telefoneCliente.matches("\\d{11}")) {
+                            System.out.println("Telefone inválido. Digite novamente.");
+                        } else {
+                            telefoneCliente = formatarTelefone(telefoneCliente);
+                            break;
+                        }
+                    }
                     if (telefoneCliente.equals("-1")) break;
 
-                    System.out.print("Email do Cliente (ou -1 para cancelar): ");
-                    String emailCliente = scanner.nextLine();
+                    String emailCliente = null;
+                    while (true) {
+                        System.out.print("Email do Cliente (ou -1 para cancelar): ");
+                        emailCliente = scanner.nextLine();
+                        if (emailCliente.equals("-1")) break;
+                        if (!emailCliente.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                            System.out.println("Email inválido. Digite novamente.");
+                        } else {
+                            break;
+                        }
+                    }
                     if (emailCliente.equals("-1")) break;
+
                     Cliente cliente = new Cliente(nomeCliente, telefoneCliente, emailCliente);
 
                     System.out.println("Escolha um Barbeiro (ou digite -1 para cancelar):");
@@ -123,6 +185,8 @@ public class Main {
 
                     Agendamento agendamento = new Agendamento(cliente, barbeiroEscolhido, servico, dataHora);
                     agenda.adicionarAgendamento(agendamento);
+
+                    System.out.println("\nAgendamento criado com sucesso!\n");
                     break;
                 case 4:
                     agenda.listarAgendamentos();
@@ -135,11 +199,12 @@ public class Main {
                         e.printStackTrace();
                     }
                     break;
-                case 6:
+                    case 6:
                     try {
                         Dados dados = Util.carregarDados("dados.ser");
                         agenda = dados.getAgenda();
                         barbeiros = dados.getBarbeiros();
+                        System.out.println("\nDados carregados com sucesso!\n");
                     } catch (IOException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -178,5 +243,9 @@ public class Main {
                     System.out.println("Opção inválida. Tente novamente.");
             }
         }
+    }
+
+    private static String formatarTelefone(String telefone) {
+        return String.format("(%s) %s-%s", telefone.substring(0, 2), telefone.substring(2, 7), telefone.substring(7));
     }
 }
