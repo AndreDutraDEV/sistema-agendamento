@@ -8,6 +8,11 @@ public class Cliente extends Pessoa implements Serializable {
         this.email = email;
     }
 
+    public Cliente(String nome, String telefone, String email, String cpf) {
+        super(nome, telefone, cpf);
+        this.email = email;
+    }
+
     public String getEmail() {
         return email;
     }
