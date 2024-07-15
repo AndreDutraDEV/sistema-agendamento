@@ -3,10 +3,12 @@ import java.io.Serializable;
 public class Pessoa implements Serializable {
     private String nome;
     private String telefone;
+    private String email;
 
-    public Pessoa(String nome, String telefone) {
+    public Pessoa(String nome, String telefone, String email) {
         this.nome = nome;
         this.telefone = telefone;
+        this.email = email;
     }
 
     public String getNome() {
@@ -23,5 +25,12 @@ public class Pessoa implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

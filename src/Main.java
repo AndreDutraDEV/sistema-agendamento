@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.time.LocalDateTime;
-// import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +67,22 @@ public class Main {
                         }
                     }
                     if (especialidadeBarbeiro.equals("-1")) break;
+
+                    String email = null;
+                    while (true) {
+                        System.out.print("Digite o Email do Barbeiro (ou -1 para cancelar): ");
+                        email = scanner.nextLine();
+                        if (email.equals("-1")) break;
+                        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                            System.out.println("Email inválido. Digite novamente.");
+                        } else {
+                            break;
+                        }
+                    }
+                    if (email.equals("-1")) break;
+
                     
-                    Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro);
+                    Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro, email);
                     barbeiros.add(barbeiro);
                     
                     System.out.println("\nBarbeiro cadastrado com sucesso!\n");
