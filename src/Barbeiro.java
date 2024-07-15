@@ -1,10 +1,11 @@
 import java.io.Serializable;
 
 public class Barbeiro extends Pessoa implements Serializable {
+    
     private String especialidade;
 
-    public Barbeiro(String nome, String telefone, String especialidade, String email) {
-        super(nome, telefone, email);
+    public Barbeiro(String nome, String telefone, String especialidade, String cpf, String email) {
+        super(nome, telefone, cpf, email);
         this.especialidade = especialidade;
     }
 

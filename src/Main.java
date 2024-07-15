@@ -75,14 +75,20 @@ public class Main {
                         if (email.equals("-1")) break;
                         if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                             System.out.println("Email inválido. Digite novamente.");
+                    String cpfBarbeiro = null;
+                    while (true) {
+                        System.out.print("Cpf do Barbeiro [apenas os números] (ou -1 para cancelar): ");
+                        cpfBarbeiro = scanner.nextLine();
+                        if (cpfBarbeiro.equals("-1")) break;
+                        if (!cpfBarbeiro.matches("\\d{11}")) {
+                            System.out.println("Cpf inválido. Digite novamente.");
                         } else {
                             break;
                         }
                     }
-                    if (email.equals("-1")) break;
-
+                    if (cpfBarbeiro.equals("-1")) break;
                     
-                    Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro, email);
+                    Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro, cpfBarbeiro,email);
                     barbeiros.add(barbeiro);
                     
                     System.out.println("\nBarbeiro cadastrado com sucesso!\n");
@@ -144,6 +150,18 @@ public class Main {
                         }
                     }
                     if (emailCliente.equals("-1")) break;
+                    
+                    String cpfCliente = null;
+                    while (true) {
+                        System.out.print("Cpf do Cliente [apenas os números] (ou -1 para não preencher este dado): ");
+                        cpfCliente = scanner.nextLine();
+                        if (cpfCliente.equals("-1")) break;
+                        if (!cpfCliente.matches("\\d{11}")) {
+                            System.out.println("Cpf inválido. Digite novamente.");
+                        } else {
+                            break;
+                        }
+                    }
 
                     Cliente cliente = new Cliente(nomeCliente, telefoneCliente, emailCliente);
 
