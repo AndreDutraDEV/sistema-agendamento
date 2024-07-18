@@ -1,4 +1,4 @@
-# Projeto de Sistema de Agendamentos para Barbearia - Programação 2 - UPE Sistemas De Informação
+# Sistema de Agendamentos para Barbearia - Programação 2 - UPE Sistemas De Informação
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////// -->
 
