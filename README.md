@@ -1,9 +1,15 @@
-Vamos analisar o projeto e destacar onde cada especificação está presente no código fornecido:
+# Sistema de Agendamentos para Barbearia
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////// -->
+
+## Visão Geral do Projeto
+
+Este repositório contém o código-fonte para um sistema de agendamentos desenvolvido para uma barbearia. Abaixo está uma análise detalhada das classes e como cada especificação do projeto é atendida.
 
 ### 1. Sistema aplicável em contexto real
 
 **Descrição:**
-Um sistema para agendamentos em uma barbearia.
+O sistema desenvolvido é um sistema de agendamentos para uma barbearia, um exemplo aplicável em um contexto real.
 
 **Presente em:**
 Todo o projeto, especialmente na classe `Main`, onde é implementada a lógica para gerenciar barbeiros, clientes e agendamentos.
@@ -144,9 +150,99 @@ public class Util {
 }
 ```
 
+## Fluxograma
+
+### Fluxo Principal do Sistema
+
+1. **Início**
+2. **Exibir Menu**
+   - 1. Cadastrar Barbeiro
+   - 2. Listar Barbeiros
+   - 3. Adicionar Agendamento
+   - 4. Listar Agendamentos
+   - 5. Salvar Dados
+   - 6. Carregar Dados
+   - 7. Sair
+3. **Processar Escolha do Usuário**
+   - **Cadastrar Barbeiro**
+     - Entrada de dados (nome, telefone, especialidade, CPF)
+     - Validar dados
+     - Adicionar à lista de barbeiros
+   - **Listar Barbeiros**
+     - Exibir lista de barbeiros cadastrados
+   - **Adicionar Agendamento**
+     - Verificar se há barbeiros cadastrados
+     - Entrada de dados (cliente, barbeiro, data/hora, descrição do serviço, preço)
+     - Validar dados
+     - Adicionar agendamento à agenda
+   - **Listar Agendamentos**
+     - Exibir lista de agendamentos
+   - **Salvar Dados**
+     - Serializar dados (agenda e barbeiros) e salvar em arquivo
+   - **Carregar Dados**
+     - Desserializar dados do arquivo e carregar na aplicação
+   - **Sair**
+     - Perguntar se deseja salvar os dados antes de sair
+4. **Fim**
+
+### Exemplos de Fluxograma
+
+#### Menu Principal
+```plaintext
+Inicio
+    ↓
+Exibir Menu
+    ↓
+Escolha do Usuário
+    ↓
+[1] Cadastrar Barbeiro → Cadastrar Barbeiro
+    ↓
+[2] Listar Barbeiros → Listar Barbeiros
+    ↓
+[3] Adicionar Agendamento → Adicionar Agendamento
+    ↓
+[4] Listar Agendamentos → Listar Agendamentos
+    ↓
+[5] Salvar Dados → Salvar Dados
+    ↓
+[6] Carregar Dados → Carregar Dados
+    ↓
+[7] Sair → Sair
+```
+
+#### Cadastrar Barbeiro
+```plaintext
+Cadastrar Barbeiro
+    ↓
+Entrada de Dados
+    ↓
+Validar Dados
+    ↓
+Adicionar à Lista de Barbeiros
+    ↓
+Fim
+```
+
+#### Adicionar Agendamento
+```plaintext
+Adicionar Agendamento
+    ↓
+Verificar se há barbeiros cadastrados
+    ↓
+Entrada de Dados
+    ↓
+Validar Dados
+    ↓
+Adicionar Agendamento à Agenda
+    ↓
+Fim
+```
+
 ### Resumo
 
 Cada especificação do projeto está claramente implementada e pode ser encontrada nas classes e métodos descritos acima. Isso mostra um uso consistente de conceitos de programação orientada a objetos, como herança, composição, polimorfismo, sobrecarga de métodos, métodos estáticos e serialização.
+
+
 
 ## Getting Started
 
