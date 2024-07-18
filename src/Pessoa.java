@@ -7,19 +7,16 @@ public class Pessoa implements Serializable {
     private String telefone;
     
     private String cpf;
-    private String email;
     
-    public Pessoa(String nome, String telefone, String email) {
+    public Pessoa(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
-        this.email = email;
     }
 
-    public Pessoa(String nome, String telefone, String cpf, String email) {
+    public Pessoa(String nome, String telefone, String cpf) {
         this.nome = nome;
         this.telefone = telefone;
         this.cpf = cpf;
-        this.email = email;
     }
 
     public String getNome() {
@@ -44,12 +41,5 @@ public class Pessoa implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

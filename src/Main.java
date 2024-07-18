@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.time.LocalDateTime;
+// import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,16 +69,6 @@ public class Main {
                     }
                     if (especialidadeBarbeiro.equals("-1")) break;
 
-                    String email = null;
-
-                    while (true) {
-                        System.out.print("Digite o Email do Barbeiro (ou -1 para cancelar): ");
-                        email = scanner.nextLine();
-                        if (email.equals("-1")) break;
-                        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-                            System.out.println("Email inválido. Digite novamente.");
-                        }
-                    }
                     String cpfBarbeiro = null;
                     while (true) {
                         System.out.print("Cpf do Barbeiro [apenas os números] (ou -1 para cancelar): ");
@@ -91,7 +82,7 @@ public class Main {
                     }
                     if (cpfBarbeiro.equals("-1")) break;
                     
-                    Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro, cpfBarbeiro,email);
+                    Barbeiro barbeiro = new Barbeiro(nomeBarbeiro, telefoneBarbeiro, especialidadeBarbeiro, cpfBarbeiro);
                     barbeiros.add(barbeiro);
                     
                     System.out.println("\nBarbeiro cadastrado com sucesso!\n");
@@ -103,7 +94,7 @@ public class Main {
                     } else {
                         System.out.println("Barbeiros cadastrados:");
                         for (Barbeiro b : barbeiros) {
-                            System.out.println("Nome: " + b.getNome() + ", Telefone: " + b.getTelefone() + ", Especialidade: " + b.getEspecialidade());
+                            System.out.println("\nNome: " + b.getNome() + ", Telefone: " + b.getTelefone() + ", Especialidade: " + b.getEspecialidade());
                         }
                         System.out.println("\n\n");
                     }
