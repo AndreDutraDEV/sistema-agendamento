@@ -6,13 +6,11 @@ public class Cliente extends Pessoa implements Serializable {
         super(nome, telefone, email);
     }
 
-    public Cliente(String nome, String telefone, String email, String cpf, String email) {
+    public Cliente(String nome, String telefone, String email, String cpf) {
         super(nome, telefone, cpf, email);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-   
+    // public String getEmail() {
+    //     return super.email;
+    // }
 }

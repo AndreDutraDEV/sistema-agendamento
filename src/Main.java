@@ -69,12 +69,15 @@ public class Main {
                     if (especialidadeBarbeiro.equals("-1")) break;
 
                     String email = null;
+
                     while (true) {
                         System.out.print("Digite o Email do Barbeiro (ou -1 para cancelar): ");
                         email = scanner.nextLine();
                         if (email.equals("-1")) break;
                         if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                             System.out.println("Email inválido. Digite novamente.");
+                        }
+                    }
                     String cpfBarbeiro = null;
                     while (true) {
                         System.out.print("Cpf do Barbeiro [apenas os números] (ou -1 para cancelar): ");
